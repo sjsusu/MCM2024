@@ -23,7 +23,7 @@ with open(csv_file_path, 'r') as csv_file:
         data_2d_array.append(row)
 
 #Model 1
-for i in range(1,7284):
+for i in range(1,7285):
     if data_2d_array[i][13] == data_2d_array[i][15]:
         count += 1
     else:
@@ -36,7 +36,7 @@ print("Return Rate:", returnrate)
 
 # Model 2
 # Iterate over the rows and perform the desired calculations
-for i in range(1, 7284):
+for i in range(1, 7285):
 #    if data_2d_array[i][13] == data_2d_array[i][15]:
         count += 1
         # Ensure that the value is convertible to an integer before adding
@@ -64,7 +64,7 @@ countWin1 = 0 #total speed on first serve
 countWin2 = 0 #total speed on second serve
 win1count = 0 #number of wins made on first serve with speed tracked
 win2count = 0 #number of wins made on second serve with speed tracked
-for i in range(1, 7284):
+for i in range(1, 7285):
     
     if int(data_2d_array[i][14]) == 1:
         if data_2d_array[i][13] == data_2d_array[i][15]:
@@ -117,7 +117,7 @@ result = calculate_probability_of_winning_tiebreaker(tiebreak)
 print(f"The probability of winning the tiebreaker is: {result}")
 keepcountserve = 0
 keepcountreturn =0
-for i in range(1,7284):
+for i in range(1,7285):
     if data_2d_array[i][4] != data_2d_array[i-1][4]:
         store = int(data_2d_array[i][13])
     if int(data_2d_array[i][19]) != 0:
