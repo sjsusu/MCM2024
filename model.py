@@ -1,7 +1,7 @@
 import csv
 import pandas as pd
 
-path = "finals.csv"
+path = "final.csv"
 
 array = []
 
@@ -78,18 +78,30 @@ def calculate_flow(array, end_row=len(array)):
             n1 = 1
             n2 += 1
             if int(array[i][18]) == 1:
-                if server == 1:
+                if 0<=int(array[i-1][11])<=7 and 0<=int(array[i][12])<=7:
+                    if server == 1:
+                        Gj -= T
+                    else:
+                        Gj -= T
+                elif server == 1:
                     Gj -= GS
                 else:
                     Gj -= GR
             else:
-                if server == 1:
+                if 0<=int(array[i-1][11])<=7 and 0<=int(array[i][12])<=7:
+                    if server == 1:
+                        Gj += T
+                    else:
+                        Gj -= T
+                elif server == 1:
                     Gj += GR
                 else:
                     Gj += GS
 
         # For Sets
         if int(array[i][19]) != 0:
+            Gj /= n2
+            n2 = 1
             n3 += 1
             if int(array[i][19]) == 1:
                 if server == 1:
