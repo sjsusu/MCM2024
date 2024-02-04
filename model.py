@@ -1,7 +1,7 @@
 import csv
 import pandas as pd
 
-path = 'match3.csv'
+path = 'finals.csv'
 
 array = []
 
@@ -52,6 +52,9 @@ def calculate_flow(array,end_row = len(array)):
         winner = int(array[i][15])
 
         # For Points
+        if n1==2:
+            Pi/=2
+            n1=1
         if winner == 1:
             if server == 1:
                 Pi -= PS
@@ -92,14 +95,19 @@ def calculate_flow(array,end_row = len(array)):
                     S += SR
                 else: 
                     S += SS 
+    if n2==0:
+        n2 =1
+    if n3 ==0:
+        n3 = 1
     
-    return KAPPA * (Pi+Gj+S)/(2*n1+n2+n3)
+
+    return KAPPA*(Pi/(2*n1)+Gj/n2+S/n3)
 data = []
 for i in range(2,len(array)):
     data.append(calculate_flow(array,i))
 
 df = pd.DataFrame(data)
-data_path = 'flowmatch3.csv'
+data_path = 'flow_final.csv'
 df.to_csv(data_path, index = False)
 
 
