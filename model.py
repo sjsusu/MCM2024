@@ -51,7 +51,7 @@ def calculate_flow(array, end_row=len(array)):
 
     Pi = 0
     Gj = 0
-    S = 0
+    Sk = 0
 
     for i in range(1, end_row):
         server = int(array[i][13])
@@ -105,20 +105,20 @@ def calculate_flow(array, end_row=len(array)):
             n3 += 1
             if int(array[i][19]) == 1:
                 if server == 1:
-                    S -= SS
+                    Sk -= SS
                 else:
-                    S -= SR
+                    Sk -= SR
             else:
                 if server == 1:
-                    S += SR
+                    Sk += SR
                 else:
-                    S += SS
+                    Sk += SS
     if n2 == 0:
         n2 = 1
     if n3 == 0:
         n3 = 1
 
-    return KAPPA * ((Pi / (2 * n1)) + (Gj / n2) + (S / n3))
+    return KAPPA * ((Pi / (2 * n1)) + (Gj / n2) + (Sk / n3))
 
 
 data = []
